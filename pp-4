@@ -30,5 +30,13 @@ sh "mvn deploy"
 }
 }
 
+stage('Deploy app to Tomcat'){
+steps{
+sshagent(['fc934559-0edc-442a-ae3e-e2a8f18b7c8f']) {
+  sh "scp -o StrictHostKeyChecking=no target/maven-stanalone-application-0.0.1-SNAPSHOT.jar ec2-user@15.206.145.11:/opt/apache-tomcat-9.0.64/webapps/"
+}
+}
+}
+
 }//end stages
 }//end pipeline
