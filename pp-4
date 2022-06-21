@@ -1,0 +1,22 @@
+pipeline{
+agent any
+
+tools{
+maven "Maven Version -3.8.4"
+}
+
+stages{
+stage('github'){
+steps{
+git credentialsId: '01569543-dc72-44c5-997f-e30f0f3bb4ad', url: 'https://github.com/Nbkdevops/maven-standalone-application.git'
+}
+}
+
+stage('Build'){
+steps{
+sh "mvn clean package"
+}
+}
+
+}//end stages
+}//end pipeline
