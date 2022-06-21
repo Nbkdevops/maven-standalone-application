@@ -18,5 +18,17 @@ sh "mvn clean package"
 }
 }
 
+stage('Generating SOnar Report'){
+steps{
+sh "mvn sonar:sonar"
+}
+}
+
+stage('Reporting Artifatory reposit'){
+steps{
+sh "mvn deploy"
+}
+}
+
 }//end stages
 }//end pipeline
